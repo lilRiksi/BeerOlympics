@@ -1,122 +1,71 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
-import './App.css'
+import { useState } from 'react';
+import Navbar from './components/Navbar';
+import Modal from './components/Modal';
+import AboutSection from './sections/AboutSection';
+import CommentsSection from './sections/CommentsSection';
+import ContactSection from './sections/ContactSection';
+import GameFeature from './sections/GameFeature';
+import HomeHero from './sections/HomeHero';
+import TeamRegistrationForm from './features/registration/TeamRegistrationForm';
+import { games } from './data/site';
 
-function App() {
-  const [count, setCount] = useState(0)
+const emailJsConfig = {
+  serviceId: 'service_fqw8lii',
+  templateId: 'template_d44m8x9',
+  // Add a public key when configuring EmailJS in the new React project.
+  publicKey: '',
+};
+
+export default function App() {
+  const [activeModal, setActiveModal] = useState(null);
 
   return (
     <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
-        </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.jsx</code> and save to test <code>HMR</code>
-          </p>
-        </div>
-        <button
-          type="button"
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
+      <Navbar />
+      <main>
+        <HomeHero onRegister={() => setActiveModal('register')} />
+        <AboutSection />
+        {games.map((game) => (
+          <GameFeature
+            key={game.id}
+            game={game}
+            onLearnMore={() => setActiveModal(game.id)}
+          />
+        ))}
+        <CommentsSection />
+        <ContactSection />
+      </main>
+      <footer className="site-footer">
+        <p>Copyright © 2026 | Beer Olympics<sup>™</sup></p>
+      </footer>
+
+      <Modal
+        isOpen={activeModal === 'register'}
+        title="Register your team"
+        onClose={() => setActiveModal(null)}
+        className="registration-modal"
+      >
+        <TeamRegistrationForm emailJsConfig={emailJsConfig} />
+      </Modal>
+
+      {games.map((game) => (
+        <Modal
+          key={game.id}
+          isOpen={activeModal === game.id}
+          title={game.modalTitle}
+          onClose={() => setActiveModal(null)}
+          heroImage={game.modalImage}
         >
-          Count is {count}
-        </button>
-      </section>
-
-      <div className="ticks"></div>
-
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
+          <div className="info-modal-content">
+            {game.rules.map((rule) => <p key={rule}>{rule}</p>)}
+            {game.modalLink && (
+              <a className="button" href={game.modalLink.href}>
+                {game.modalLink.label}
               </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
-
-      <div className="ticks"></div>
-      <section id="spacer"></section>
+            )}
+          </div>
+        </Modal>
+      ))}
     </>
-  )
+  );
 }
-
-export default App

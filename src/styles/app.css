@@ -59,7 +59,7 @@ img { display:block; max-width:100%; }
 @keyframes photo-drift { 50% { transform:translateY(-14px) rotate(1.5deg); } }
 #tag-list { display:none; }
 
-.game-feature { min-height:80vh; display:grid; align-items:center; padding:3rem 0; }
+.game-feature { min-height:80vh; display:grid; align-items:center; padding:3rem 0; scroll-margin-top:6rem; }
 .game-feature__inner { display:flex; align-items:center; justify-content:space-between; gap:3rem; }
 .game-feature--reversed .game-feature__inner { flex-direction:row-reverse; }
 .game-feature__copy, .game-feature__art { flex:1; }

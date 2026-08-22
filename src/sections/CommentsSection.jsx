@@ -1,31 +1,39 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { createComment, getComments } from '../services/api';
 
 const BUBBLE_COUNT = 10;
 
 export default function CommentsSection() {
-  const [comments, setComments] = useState([]);
+  const [comments, setComments] = useState(() => {
+    try {
+      return getComments();
+    } catch {
+      return [];
+    }
+  });
   const [error, setError] = useState('');
 
-  const loadComments = async () => {
+  const loadComments = () => {
     try {
-      setComments(await getComments());
+      setComments(getComments());
       setError('');
     } catch {
-      setError('Comments are currently unavailable.');
+      setError('Comments could not be loaded from this browser.');
     }
   };
 
-  useEffect(() => { loadComments(); }, []);
-
-  const addComment = async () => {
+  const addComment = () => {
     const text = window.prompt('Write your comment (maximum 50 words):');
     if (!text?.trim()) return;
+    if (text.trim().split(/\s+/).length > 50) {
+      setError('Please keep your comment to 50 words or fewer.');
+      return;
+    }
     try {
-      await createComment(text.trim());
-      await loadComments();
+      createComment(text.trim());
+      loadComments();
     } catch (requestError) {
-      setError(requestError.message || 'Your comment could not be sent.');
+      setError(requestError.message || 'Your comment could not be saved.');
     }
   };
 

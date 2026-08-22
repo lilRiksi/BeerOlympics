@@ -1,6 +1,9 @@
 export default function GameFeature({ game, onLearnMore }) {
   return (
-    <section className={`game-feature ${game.reversed ? 'game-feature--reversed' : ''}`}>
+    <section
+      id={game.id === 'pong' ? 'games' : game.id}
+      className={`game-feature ${game.reversed ? 'game-feature--reversed' : ''}`}
+    >
       <div className="game-feature__inner section-container">
         <div className="game-feature__copy">
           <h2>

@@ -4,6 +4,8 @@ import { navItems } from '../data/site';
 export default function Navbar({ alwaysScrolled = false }) {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(alwaysScrolled);
+  const currentPath = window.location.pathname;
+  const visibleNavItems = navItems.filter((item) => item.href.startsWith('#') || item.href !== currentPath);
 
   useEffect(() => {
     if (alwaysScrolled) {
@@ -32,7 +34,7 @@ export default function Navbar({ alwaysScrolled = false }) {
           <span /><span /><span />
         </button>
         <div className={`nav-links ${isOpen ? 'nav-links--open' : ''}`}>
-          {navItems.map((item) => (
+          {visibleNavItems.map((item) => (
             <a key={item.label} href={item.href.startsWith('#') ? `/${item.href}` : item.href} onClick={() => setIsOpen(false)}>{item.label}</a>
           ))}
         </div>

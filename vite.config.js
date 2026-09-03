@@ -14,6 +14,7 @@ export default defineConfig({
         ownthemoment: 'ownthemoment.html',
         lottery: 'lottery.html',
         prizepool: 'prizepool.html',
+        bracket: 'bracket.html',
       },
     },
   },

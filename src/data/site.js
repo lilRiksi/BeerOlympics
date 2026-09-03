@@ -3,6 +3,7 @@ export const eventDate = '2026-07-23T19:00:00+02:00';
 export const navItems = [
   { label: 'About', href: '#about' },
   { label: 'Games', href: '#games' },
+  { label: 'Brackets', href: '/bracket.html' },
   { label: 'Tickets', href: '/tickets.html' },
   { label: 'T-Shirts', href: '/t-shirts.html' },
   { label: 'Hall of Fame', href: '/halloffame.html' },

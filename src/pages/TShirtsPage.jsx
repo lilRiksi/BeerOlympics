@@ -39,7 +39,7 @@ export default function TShirtsPage() {
           <a className="tshirts-nav__brand" href="/#home" aria-label="Beer Olympics home"><img src="/media/logo.png" alt="Beer Olympics" /></a>
           <button className="tshirts-nav__menu-button" type="button" aria-label="Toggle navigation" aria-expanded={menuOpen} onClick={() => setMenuOpen((open) => !open)}><span /><span /><span /></button>
           <div className={`tshirts-nav__links ${menuOpen ? 'tshirts-nav__links--open' : ''}`}>
-            <a href="/#about" onClick={closeMenu}>About</a><a href="/#games" onClick={closeMenu}>Games</a><a href="/tickets.html" onClick={closeMenu}>Tickets</a><a href="/halloffame.html" onClick={closeMenu}>Hall of Fame</a><a href="/gallery.html" onClick={closeMenu}>Gallery</a><a href="/#contact" onClick={closeMenu}>Contact</a>
+            <a href="/#about" onClick={closeMenu}>About</a><a href="/#games" onClick={closeMenu}>Games</a><a href="/bracket.html" onClick={closeMenu}>Brackets</a><a href="/tickets.html" onClick={closeMenu}>Tickets</a><a href="/halloffame.html" onClick={closeMenu}>Hall of Fame</a><a href="/gallery.html" onClick={closeMenu}>Gallery</a><a href="/#contact" onClick={closeMenu}>Contact</a>
           </div>
         </nav>
       </header>

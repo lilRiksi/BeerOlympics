@@ -58,7 +58,7 @@ export default function TicketsPage() {
 
       <main>
         <section className="tickets-page__heading" aria-labelledby="tickets-title">
-          <p>Beer Olympics</p>
+          <p>Beer Olympics<sup>™</sup></p>
           <h1 id="tickets-title">Tickets</h1>
         </section>
         <section className="tickets-page__section" aria-label="Ticket options">
@@ -68,7 +68,7 @@ export default function TicketsPage() {
         </section>
 
         <section className="tickets-page__heading tickets-page__heading--bundles" aria-labelledby="bundles-title">
-          <p>Beer Olympics</p>
+          <p>Beer Olympics<sup>™</sup></p>
           <h2 id="bundles-title">Bundles</h2>
         </section>
         <section className="tickets-page__section">

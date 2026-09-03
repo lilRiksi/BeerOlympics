@@ -48,6 +48,7 @@ export default function TicketsPage() {
           <div className={`tickets-nav__links ${menuOpen ? 'tickets-nav__links--open' : ''}`}>
             <a href="/#about" onClick={closeMenu}>About</a>
             <a href="/#games" onClick={closeMenu}>Games</a>
+            <a href="/bracket.html" onClick={closeMenu}>Brackets</a>
             <a href="/t-shirts.html" onClick={closeMenu}>T-Shirts</a>
             <a href="/halloffame.html" onClick={closeMenu}>Hall of Fame</a>
             <a href="/gallery.html" onClick={closeMenu}>Gallery</a>

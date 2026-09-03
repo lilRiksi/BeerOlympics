@@ -14,12 +14,20 @@ const years = [
 
 const medals = { 'First place': '🥇', 'Second place': '🥈', 'Third place': '🥉' };
 
+const yearAnchors = {
+  'Beer Olympics 1.0': 'year-2021',
+  'Beer Olympics 2.0': 'year-2022',
+  'Beer Olympics 3.0': 'year-2023',
+  'Beer Olympics 4.0': 'year-2024',
+  'Beer Olympics "The Last Dance"': 'year-2025',
+  'Beer Olympics VI': 'year-2026',
+};
+
 function EventTitle({ title }) {
   const eventName = 'Beer Olympics';
   if (!title.startsWith(eventName)) return title;
   return <>{eventName}<sup>™</sup><span>{title.slice(eventName.length)}</span></>;
 }
-
 function WinnerCard({ winner, place }) {
   return <article className="hall-of-fame__card"><img src={`/media/halloffame/${winner.image}`} alt={winner.name} />{place && <p className="hall-of-fame__place">{place}</p>}<p className="hall-of-fame__name">{winner.name}{place && ` ${medals[place]}`}</p>{winner.mvp && <img className="hall-of-fame__mvp" src="/media/halloffame/mvp.png" alt="Most valuable player" />}</article>;
 }
@@ -41,8 +49,8 @@ export default function HallOfFamePage() {
 
   return (
     <div className="hall-of-fame">
-      <header className="hall-nav"><nav className="hall-nav__inner" aria-label="Primary navigation"><a className="hall-nav__brand" href="/#home" aria-label="Beer Olympics home"><img src="/media/logo.png" alt="Beer Olympics" /></a><button className="hall-nav__menu-button" type="button" aria-label="Toggle navigation" aria-expanded={menuOpen} onClick={() => setMenuOpen((open) => !open)}><span /><span /><span /></button><div className={`hall-nav__links ${menuOpen ? 'hall-nav__links--open' : ''}`}><a href="/#about" onClick={closeMenu}>About</a><a href="/#games" onClick={closeMenu}>Games</a><a href="/tickets.html" onClick={closeMenu}>Tickets</a><a href="/t-shirts.html" onClick={closeMenu}>T-Shirts</a><a href="/gallery.html" onClick={closeMenu}>Gallery</a><a href="/#contact" onClick={closeMenu}>Contact</a></div></nav></header>
-      <main><section className="hall-of-fame__heading"><p>Beer Olympics<sup>™</sup></p><h1>Hall of Fame</h1></section>{years.map((entry) => <section className="hall-of-fame__year" id={entry.year === 'Beer Olympics VI' ? 'year-2026' : undefined} style={entry.year === 'Beer Olympics VI' ? { scrollMarginTop: '5.5rem' } : undefined} key={entry.year} aria-labelledby={`year-${entry.year}`}><h2 id={`year-${entry.year}`}><EventTitle title={entry.year} /></h2><Placement place="First place" winners={entry.first} /><div className="hall-of-fame__lower"><Placement place="Second place" winners={entry.second} /><Placement place="Third place" winners={entry.third} /></div></section>)}</main>
+      <header className="hall-nav"><nav className="hall-nav__inner" aria-label="Primary navigation"><a className="hall-nav__brand" href="/#home" aria-label="Beer Olympics home"><img src="/media/logo.png" alt="Beer Olympics" /></a><button className="hall-nav__menu-button" type="button" aria-label="Toggle navigation" aria-expanded={menuOpen} onClick={() => setMenuOpen((open) => !open)}><span /><span /><span /></button><div className={`hall-nav__links ${menuOpen ? 'hall-nav__links--open' : ''}`}><a href="/#about" onClick={closeMenu}>About</a><a href="/#games" onClick={closeMenu}>Games</a><a href="/bracket.html" onClick={closeMenu}>Brackets</a><a href="/tickets.html" onClick={closeMenu}>Tickets</a><a href="/t-shirts.html" onClick={closeMenu}>T-Shirts</a><a href="/gallery.html" onClick={closeMenu}>Gallery</a><a href="/#contact" onClick={closeMenu}>Contact</a></div></nav></header>
+      <main><section className="hall-of-fame__heading"><p>Beer Olympics<sup>™</sup></p><h1>Hall of Fame</h1></section>{years.map((entry) => <section className="hall-of-fame__year" id={yearAnchors[entry.year]} style={{ scrollMarginTop: '5.5rem' }} key={entry.year} aria-labelledby={`year-${entry.year}`}><h2 id={`year-${entry.year}`}><EventTitle title={entry.year} /></h2><Placement place="First place" winners={entry.first} /><div className="hall-of-fame__lower"><Placement place="Second place" winners={entry.second} /><Placement place="Third place" winners={entry.third} /></div></section>)}</main>
       <SiteFooter className="hall-of-fame__footer" />
     </div>
   );

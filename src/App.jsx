@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Navbar from './components/Navbar';
 import Modal from './components/Modal';
 import AboutSection from './sections/AboutSection';
@@ -18,6 +18,12 @@ const emailJsConfig = {
 
 export default function App() {
   const [activeModal, setActiveModal] = useState(null);
+
+  useEffect(() => {
+    const targetId = window.location.hash.slice(1);
+    if (!targetId) return;
+    requestAnimationFrame(() => document.getElementById(targetId)?.scrollIntoView());
+  }, []);
 
   return (
     <>

@@ -12,9 +12,10 @@ html, body, #root { min-height:100%; margin:0; background:#fee283; }
 .tickets-nav__menu-button { display:none; padding:0; border:0; background:none; }
 .tickets-nav__menu-button span { display:block; width:24px; height:3px; margin:4px 0; background:#000; }
 .tickets-page__heading { padding:11.5rem 1.5rem 0; text-align:center; font-family:Georgia, 'Times New Roman', serif; }
-.tickets-page__heading p, .tickets-page__heading h1, .tickets-page__heading h2 { margin:0; font-weight:400; }
-.tickets-page__heading p { font-size:clamp(2.25rem, 5vw, 3rem); }
-.tickets-page__heading h1, .tickets-page__heading h2 { color:#fc0; font-size:clamp(2rem, 4vw, 2.25rem); }
+.tickets-page__heading p, .tickets-page__heading h1, .tickets-page__heading h2 { margin:0; font-weight:700; line-height:.95; }
+.tickets-page__heading p { font-size:clamp(3.25rem, 8vw, 6.5rem); }
+.tickets-page__heading p sup { position:relative; top:-.15em; left:-.28em; font-size:.28em; vertical-align:top; }
+.tickets-page__heading h1, .tickets-page__heading h2 { color:#fc0; font-size:clamp(3rem, 6vw, 5rem); }
 .tickets-page__heading--bundles { padding-top:7.5rem; }
 .tickets-page__section { padding:3.75rem 10%; text-align:center; }
 .tickets-page__cards { display:flex; flex-wrap:wrap; justify-content:center; gap:3.75rem; }

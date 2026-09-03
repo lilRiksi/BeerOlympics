@@ -38,3 +38,9 @@ export function createComment(text) {
     throw new Error('Your comment could not be saved in this browser.');
   }
 }
+
+export async function preorderTshirt(payload) {
+  const response = await request('/tshirt-preorder', { method: 'POST', body: JSON.stringify(payload) });
+  if (!response.success) throw new Error(response.msg || 'Could not send preorder.');
+  return response;
+}

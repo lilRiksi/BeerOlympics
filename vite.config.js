@@ -8,6 +8,7 @@ export default defineConfig({
       input: {
         main: 'index.html',
         tickets: 'tickets.html',
+        tshirts: 't-shirts.html',
       },
     },
   },

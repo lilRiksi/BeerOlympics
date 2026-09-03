@@ -18,7 +18,17 @@ function Countdown() {
     const timer = window.setInterval(() => setTimeLeft(getTimeLeft()), 1_000);
     return () => window.clearInterval(timer);
   }, []);
-  if (!timeLeft) return <p className="countdown-ended">The event date has passed.</p>;
+  if (!timeLeft) {
+    return (
+      <div className="event-status">
+        <p className="countdown-ended">The event date has passed.</p>
+        <div className="event-status__links">
+          <a className="button" href="/halloffame.html#year-2026">See Winners</a>
+          <a className="button" href="/gallery.html#2026">View Gallery</a>
+        </div>
+      </div>
+    );
+  }
   return (
     <div className="countdown" aria-label="Time left until the event">
       {Object.entries(timeLeft).map(([label, value]) => (
@@ -43,6 +53,11 @@ export default function HomeHero({ onRegister }) {
       </div>
       <div className="hero-showcase">
         <h2>Beer Olympics<sup>™</sup><span>VI</span></h2>
+        <div className="event-details" aria-label="Event details">
+          <p><strong>23.07.2026</strong></p>
+          <p>Leona Lux — Radovis</p>
+          <p>Starts at 19:00</p>
+        </div>
         <Countdown />
       </div>
     </section>

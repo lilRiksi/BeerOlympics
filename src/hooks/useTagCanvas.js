@@ -33,7 +33,7 @@ export default function useTagCanvas() {
             depth: 0.7,
             maxSpeed: 0.03,
             imageMode: 'image',
-            imageScale: 0.45,
+            imageScale: 0.12,
             minBrightness: 0.5,
             noMouse: true,
             noSelect: true,

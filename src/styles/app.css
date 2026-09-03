@@ -20,9 +20,8 @@ img { display:block; max-width:100%; }
 .site-nav--scrolled .brand { width:40px; flex-basis:40px; }
 .nav-links { display:flex; align-items:center; gap:1.6rem; font-size:1.05rem; }
 .nav-links a { position:relative; }
-.nav-links a:not(.language-link)::after { content:""; display:block; position:absolute; width:0; height:2px; left:0; bottom:-.35rem; background:var(--black); transition:width .2s; }
+.nav-links a::after { content:""; display:block; position:absolute; width:0; height:2px; left:0; bottom:-.35rem; background:var(--black); transition:width .2s; }
 .nav-links a:hover::after { width:55%; }
-.language-link { opacity:.7; }
 .menu-button { display:none; padding:0; border:0; background:none; }
 .menu-button span { display:block; width:24px; height:3px; margin:4px 0; background:var(--black); }
 
@@ -37,13 +36,13 @@ img { display:block; max-width:100%; }
 .hero-wave__small { display:none; }
 .hero-showcase { grid-area:showcase; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:2rem; color:var(--yellow); background:var(--black); padding:7rem 1.5rem 4rem; text-align:center; }
 .hero-showcase h2 { margin:0; font-family:Georgia, serif; font-size:clamp(2.7rem, 5vw, 4.5rem); line-height:1; }
-.hero-showcase h2 span { display:block; font-family:inherit; font-size:.6em; font-weight:400; margin-top:.25rem; }
+.hero-showcase h2 span { display:block; font-family:inherit; font-size:.76em; font-weight:400; margin-top:.25rem; }
 .hero-showcase sup { font-size:.35em; }
 .countdown { display:flex; justify-content:center; gap:.75rem; color:var(--black); }
 .countdown div { display:grid; gap:.2rem; min-width:68px; padding:.6rem; background:var(--yellow); border-radius:.4rem; }
 .countdown strong { font-size:1.8rem; }
 .countdown span { font-size:.7rem; text-transform:uppercase; }
-.countdown-ended { font-weight:700; }
+.countdown-ended { margin:0; font-size:1.3rem; font-weight:700; }.event-details { display:grid; gap:.45rem; }.event-details p { margin:0; font-size:1.3rem; }.event-details strong { font-size:1.55rem; }.event-status { display:grid; gap:1rem; }.event-status__links { display:flex; flex-wrap:wrap; justify-content:center; gap:.75rem; }.event-status__links .button { padding:.8rem 1.25rem; font-size:.9rem; }
 
 .about-section { display:grid; grid-template-columns:1fr 1fr; gap:2rem; align-items:center; padding:7rem 0 4rem; }
 .about-copy { font-family:Georgia, serif; font-size:1.15rem; line-height:1.65; }
@@ -76,7 +75,7 @@ img { display:block; max-width:100%; }
 .comments-section h2 { margin:0; font-size:clamp(3rem, 6vw, 5.5rem); font-weight:500; }
 .comments-section h2 span { color:var(--yellow); }
 .comments-error { color:#b00020; }
-.comment-bubbles { position:relative; height:430px; margin-top:3rem; overflow:hidden; }
+.comment-bubbles { position:relative; height:620px; margin-top:3rem; overflow:hidden; }
 .comment-bubble { position:absolute; display:grid; place-items:center; width:160px; min-height:90px; padding:.75rem; border:3px solid var(--yellow); border-radius:30px; background:var(--white); color:var(--black); box-shadow:0 12px 25px rgb(0 0 0 / .15); font-size:.82rem; font-weight:700; animation:float 4s ease-in-out infinite; }
 .comment-bubble:not(:disabled):hover { transform:scale(1.12); animation-play-state:paused; }
 .comment-bubble--used { background:var(--yellow); border-color:var(--yellow); cursor:default; }
@@ -88,7 +87,10 @@ img { display:block; max-width:100%; }
 .contact-section h2 { margin:0; font-size:clamp(3rem, 6vw, 5.5rem); line-height:1.05; font-weight:500; }
 .contact-section h2 span { color:var(--white); }
 .contact-links { display:grid; grid-template-columns:repeat(4, 1fr); gap:1.5rem; margin:5rem 0; }
-.contact-links a, .contact-links div { display:grid; gap:1rem; font-size:2.25rem; }
+.contact-links a, .contact-links div { display:grid; place-items:center; gap:1rem; }
+.contact-icon { width:2.25rem; height:2.25rem; fill:none; stroke:currentColor; stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round; }
+.contact-icon--filled { fill:currentColor; stroke:none; }
+.contact-icon__dot { fill:currentColor; stroke:none; }
 .contact-links strong { font-size:1rem; overflow-wrap:anywhere; }
 .contact-form { width:min(100%, 850px); margin:auto; text-align:left; }
 .contact-form label { display:grid; gap:.6rem; font-size:1.1rem; }

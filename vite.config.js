@@ -12,6 +12,7 @@ export default defineConfig({
         halloffame: 'halloffame.html',
         gallery: 'gallery.html',
         ownthemoment: 'ownthemoment.html',
+        lottery: 'lottery.html',
       },
     },
   },

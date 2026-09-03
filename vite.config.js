@@ -13,6 +13,7 @@ export default defineConfig({
         gallery: 'gallery.html',
         ownthemoment: 'ownthemoment.html',
         lottery: 'lottery.html',
+        prizepool: 'prizepool.html',
       },
     },
   },

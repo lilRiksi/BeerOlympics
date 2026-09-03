@@ -36,7 +36,7 @@ export const games = [
       'If both shooters score in the same cup, the opposing team loses additional cups.',
       'When a team wins with one cup left, the other team gets two shots to force overtime.',
     ],
-    modalLink: { label: 'Prize Pool', href: '/prize-pool.html' },
+    modalLink: { label: 'Prize Pool', href: '/prizepool.html' },
   },
   {
     id: 'moment',

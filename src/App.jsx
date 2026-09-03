@@ -23,6 +23,14 @@ export default function App() {
   useEffect(() => {
     const targetId = window.location.hash.slice(1);
     if (!targetId) return;
+    const rulesGame = targetId.match(/^rules-(pong|moment|lottery)$/);
+    if (rulesGame) {
+      requestAnimationFrame(() => {
+        setActiveModal(rulesGame[1]);
+        document.getElementById('games')?.scrollIntoView();
+      });
+      return;
+    }
     requestAnimationFrame(() => document.getElementById(targetId)?.scrollIntoView());
   }, []);
 

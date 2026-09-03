@@ -22,7 +22,14 @@ export function getComments() {
   try {
     const savedComments = window.localStorage.getItem(COMMENTS_STORAGE_KEY);
     const comments = savedComments ? JSON.parse(savedComments) : [];
-    return Array.isArray(comments) ? comments : [];
+    if (!Array.isArray(comments)) return [];
+
+    // Remove the retired test comment from browsers that already saved it.
+    const visibleComments = comments.filter((comment) => comment?.text !== 'te bela');
+    if (visibleComments.length !== comments.length) {
+      window.localStorage.setItem(COMMENTS_STORAGE_KEY, JSON.stringify(visibleComments));
+    }
+    return visibleComments;
   } catch {
     throw new Error('Comments could not be loaded from this browser.');
   }

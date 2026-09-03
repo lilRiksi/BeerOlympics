@@ -35,7 +35,6 @@ export default function Navbar({ alwaysScrolled = false }) {
           {navItems.map((item) => (
             <a key={item.label} href={item.href.startsWith('#') ? `/${item.href}` : item.href} onClick={() => setIsOpen(false)}>{item.label}</a>
           ))}
-          <a className="language-link" href="/mk.html" onClick={() => setIsOpen(false)}>MK</a>
         </div>
       </nav>
     </header>

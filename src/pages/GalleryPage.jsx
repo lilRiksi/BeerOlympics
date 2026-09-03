@@ -14,7 +14,7 @@ function EventTitle({ title }) {
 
 export default function GalleryPage() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [activeEventId, setActiveEventId] = useState('2023');
+  const [activeEventId, setActiveEventId] = useState(() => window.location.hash.slice(1) || '2023');
   const [selectedIndex, setSelectedIndex] = useState(null);
   const [visibleCount, setVisibleCount] = useState(PHOTOS_PER_BATCH);
   const loadMoreRef = useRef(null);

@@ -16,7 +16,11 @@ export default function AboutSection() {
           {tagCloudImages.slice(0, 8).map((image) => <img key={image} src={image} alt="" />)}
         </div>
         <ul id="tag-list" aria-hidden="true">
-          {tagCloudImages.map((image) => <li key={image}><img src={image} alt="" /></li>)}
+          {tagCloudImages.map((image) => (
+            <li key={image}>
+              <a href="/" onClick={(event) => event.preventDefault()}><img src={image} alt="" /></a>
+            </li>
+          ))}
         </ul>
       </div>
     </section>

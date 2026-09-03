@@ -10,6 +10,7 @@ export default defineConfig({
         tickets: 'tickets.html',
         tshirts: 't-shirts.html',
         halloffame: 'halloffame.html',
+        gallery: 'gallery.html',
       },
     },
   },

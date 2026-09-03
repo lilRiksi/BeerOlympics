@@ -1,21 +1,25 @@
 import { useEffect, useState } from 'react';
 import { navItems } from '../data/site';
 
-export default function Navbar() {
+export default function Navbar({ alwaysScrolled = false }) {
   const [isOpen, setIsOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(alwaysScrolled);
 
   useEffect(() => {
+    if (alwaysScrolled) {
+      return undefined;
+    }
+
     const onScroll = () => setIsScrolled(window.scrollY > 0);
     onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
-  }, []);
+  }, [alwaysScrolled]);
 
   return (
-    <header className={`site-nav ${isScrolled ? 'site-nav--scrolled' : ''}`}>
+    <header className={`site-nav ${isScrolled || alwaysScrolled ? 'site-nav--scrolled' : ''}`}>
       <nav className="nav-container" aria-label="Primary navigation">
-        <a className="brand" href="#home" aria-label="Beer Olympics home">
+        <a className="brand" href="/#home" aria-label="Beer Olympics home">
           <img src="/media/logo.png" alt="Beer Olympics" />
         </a>
         <button
@@ -29,7 +33,7 @@ export default function Navbar() {
         </button>
         <div className={`nav-links ${isOpen ? 'nav-links--open' : ''}`}>
           {navItems.map((item) => (
-            <a key={item.label} href={item.href} onClick={() => setIsOpen(false)}>{item.label}</a>
+            <a key={item.label} href={item.href.startsWith('#') ? `/${item.href}` : item.href} onClick={() => setIsOpen(false)}>{item.label}</a>
           ))}
           <a className="language-link" href="/mk.html" onClick={() => setIsOpen(false)}>MK</a>
         </div>

@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import SiteFooter from './components/SiteFooter';
 import Navbar from './components/Navbar';
 import Modal from './components/Modal';
 import AboutSection from './sections/AboutSection';
@@ -41,9 +42,7 @@ export default function App() {
         <CommentsSection />
         <ContactSection />
       </main>
-      <footer className="site-footer">
-        <p>Copyright © 2026 | Beer Olympics<sup>™</sup></p>
-      </footer>
+      <SiteFooter />
 
       <Modal
         isOpen={activeModal === 'register'}

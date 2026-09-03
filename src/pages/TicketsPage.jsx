@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import SiteFooter from '../components/SiteFooter';
 import '../styles/tickets.css';
 
 const ticketOptions = [
@@ -86,10 +87,7 @@ export default function TicketsPage() {
           </div>
         </section>
       </main>
-
-      <footer className="tickets-page__footer">
-        <p>Copyright © 2026 | Beer Olympics<sup>™</sup></p>
-      </footer>
+      <SiteFooter className="tickets-page__footer" />
     </div>
   );
 }

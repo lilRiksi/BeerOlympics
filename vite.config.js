@@ -9,6 +9,7 @@ export default defineConfig({
         main: 'index.html',
         tickets: 'tickets.html',
         tshirts: 't-shirts.html',
+        halloffame: 'halloffame.html',
       },
     },
   },

@@ -11,6 +11,7 @@ export default defineConfig({
         tshirts: 't-shirts.html',
         halloffame: 'halloffame.html',
         gallery: 'gallery.html',
+        ownthemoment: 'ownthemoment.html',
       },
     },
   },

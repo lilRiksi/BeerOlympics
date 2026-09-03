@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import SiteFooter from '../components/SiteFooter';
 import { preorderTshirt } from '../services/api';
 import '../styles/tshirts.css';
 
@@ -48,7 +49,7 @@ export default function TShirtsPage() {
         <section className="tshirts-page__description"><p>The official Beer Olympics T-Shirt is more than just merchandise. Wear it proudly and represent your team during the event.</p><p className="tshirts-page__requirement"><span aria-hidden="true">*</span> Owning a Beer Olympics T-Shirt is required to participate in the <a href="/#moment">"Own The Moment"</a> competition.</p></section>
         <div className="tshirts-page__preorder"><button type="button" onClick={openPreorder}>Preorder Now</button></div>
       </main>
-      <footer className="tshirts-page__footer"><p>Copyright © 2026 | Beer Olympics<sup>™</sup></p></footer>
+      <SiteFooter className="tshirts-page__footer" />
       {modalOpen && <div className="tshirts-modal-backdrop" role="presentation" onMouseDown={() => setModalOpen(false)}><section className="tshirts-modal" role="dialog" aria-modal="true" aria-labelledby="tshirts-modal-title" onMouseDown={(event) => event.stopPropagation()}><button className="tshirts-modal__close" type="button" aria-label="Close preorder form" onClick={() => setModalOpen(false)}>×</button><div className="tshirts-modal__content"><h2 id="tshirts-modal-title">Pre-Order Beer Olympics T-Shirt</h2><p className="tshirts-modal__price">Price: 400 MKD</p><form className="tshirts-modal__form" onSubmit={submitOrder}><input name="firstName" type="text" placeholder="Name" required /><input name="lastName" type="text" placeholder="Surname" required /><input name="email" type="email" placeholder="Email" required /><select name="size" required defaultValue=""><option value="" disabled>Select Size</option><option>S</option><option>M</option><option>L</option><option>XL</option><option>XXL</option></select>{formStatus.message && <p className={`tshirts-modal__message tshirts-modal__message--${formStatus.type}`} role="status">{formStatus.message}</p>}<button type="submit" disabled={isSubmitting}>{isSubmitting ? 'Sending…' : 'Order'}</button></form></div></section></div>}
     </div>
   );

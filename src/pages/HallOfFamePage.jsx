@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import SiteFooter from '../components/SiteFooter';
 import '../styles/halloffame.css';
 
 const years = [
@@ -35,7 +36,7 @@ export default function HallOfFamePage() {
     <div className="hall-of-fame">
       <header className="hall-nav"><nav className="hall-nav__inner" aria-label="Primary navigation"><a className="hall-nav__brand" href="/#home" aria-label="Beer Olympics home"><img src="/media/logo.png" alt="Beer Olympics" /></a><button className="hall-nav__menu-button" type="button" aria-label="Toggle navigation" aria-expanded={menuOpen} onClick={() => setMenuOpen((open) => !open)}><span /><span /><span /></button><div className={`hall-nav__links ${menuOpen ? 'hall-nav__links--open' : ''}`}><a href="/#about" onClick={closeMenu}>About</a><a href="/#games" onClick={closeMenu}>Games</a><a href="/tickets.html" onClick={closeMenu}>Tickets</a><a href="/t-shirts.html" onClick={closeMenu}>T-Shirts</a><a href="/gallery.html" onClick={closeMenu}>Gallery</a><a href="/#contact" onClick={closeMenu}>Contact</a></div></nav></header>
       <main><section className="hall-of-fame__heading"><p>Beer Olympics<sup>™</sup></p><h1>Hall of Fame</h1></section>{years.map((entry) => <section className="hall-of-fame__year" key={entry.year} aria-labelledby={`year-${entry.year}`}><h2 id={`year-${entry.year}`}><EventTitle title={entry.year} /></h2><Placement place="First place" winners={entry.first} /><div className="hall-of-fame__lower"><Placement place="Second place" winners={entry.second} /><Placement place="Third place" winners={entry.third} /></div></section>)}</main>
-      <footer className="hall-of-fame__footer"><p>Copyright © 2026 | Beer Olympics<sup>™</sup></p></footer>
+      <SiteFooter className="hall-of-fame__footer" />
     </div>
   );
 }

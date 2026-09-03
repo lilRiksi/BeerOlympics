@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
+import SiteFooter from '../components/SiteFooter';
 import { galleryEvents } from '../data/galleryEvents';
 import '../styles/gallery.css';
 
@@ -84,7 +85,7 @@ export default function GalleryPage() {
           </> : <p className="gallery-page__empty">Photos from this event will be added soon.</p>}
         </section>
       </main>
-      <footer className="gallery-page__footer"><p>Copyright © 2026 | Beer Olympics<sup>™</sup></p></footer>
+      <SiteFooter className="gallery-page__footer" />
       {selectedPhoto && <div className="gallery-lightbox" role="presentation" onMouseDown={() => setSelectedIndex(null)}><section role="dialog" aria-modal="true" aria-label={`${activeEvent.title} photo ${selectedIndex + 1}`} onMouseDown={(event) => event.stopPropagation()}><button className="gallery-lightbox__close" type="button" aria-label="Close photo" onClick={() => setSelectedIndex(null)}>×</button><img src={`${GALLERY_PATH}${selectedPhoto}`} alt={`${activeEvent.title} photo ${selectedIndex + 1}`} /><button className="gallery-lightbox__arrow gallery-lightbox__arrow--left" type="button" aria-label="Previous photo" onClick={() => movePhoto(-1)}>❮</button><button className="gallery-lightbox__arrow gallery-lightbox__arrow--right" type="button" aria-label="Next photo" onClick={() => movePhoto(1)}>❯</button></section></div>}
     </div>
   );
